@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  	<title>Table 05</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	
+	<link rel="stylesheet" href="css/style.css">
+
+	</head>
+	<body>
+	<section class="ftco-section">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-md-6 text-center mb-4">
+					<h2 class="heading-section">Tasks</h2>
+					
+				</div>
+			</div>
+			<div class="row justify-content-center mb-4">
+				<div class="col-md-4 text-center mb-2">
+					<div>
+						<form class="form-inline" id="form-search">
+							<div class="form-group mx-sm-2 mb-2">
+								<label for="inputSearch" class="sr-only">Type something...</label>
+								<input type="text" class="form-control" id="inputSearch" placeholder="Type something...">
+							</div>
+							<button type="submit" class="btn btn-primary mb-2">Search</button>
+						</form>
+					</div>
+				</div>
+				<div class="col-md-3 text-center mb-2">
+					<div>
+						<div class="dropdown">
+							<button class="btn btn-secondary dropdown-toggle pr-4 pl-4" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							  Sort
+							</button>
+							<div id="labelSortWrap" class="d-inline-block">
+								<span id="labelSort" class="ml-2">name - asc</span>
+							</div>
+							
+							<div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+							  <li data-orderfield="name" data-ordertype ="asc" class="dropdown-item dropdownItem">Name - Asc</li>
+							  <li data-orderfield="name" data-ordertype ="desc" class="dropdown-item dropdownItem">Name - Desc</li>
+							  <li data-orderfield="status" data-ordertype ="asc" class="dropdown-item dropdownItem">Status - Asc</li>
+							  <li data-orderfield="status" data-ordertype ="desc" class="dropdown-item dropdownItem">Status - Desc</li>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-5 text-center mb-2">
+					<button type="button" class="btn btn-primary w-100" id="add-btn">Add Task</button>
+
+					<form class="d-none align-items-center justify-content-between mt-2" id="form-add">
+						<div class="form-group mb-0 mr-1">
+							<input type="text" class="form-control" id="id-update" hidden>
+						  <input type="text" class="form-control" id="name-input" placeholder="Enter Task" required>
+						</div>
+						<div class="form-group mb-0 mr-1">
+						  <!-- <div class="dropdown">
+							<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								Status
+							</button>
+							<div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+								<button data-status-add="small" class="dropdown-item dropdownItemAdd" type="button">small</button>
+								<button data-status-add="medium" class="dropdown-item dropdownItemAdd" type="button">medium</button>
+								<button data-status-add="high" class="dropdown-item dropdownItemAdd" type="button">high</button>
+							</div>
+							</div> -->
+
+							<select class="form-select" aria-label="Default select example">
+								<option value="low">Low</option>
+								<option value="medium">Medium</option>
+								<option value="high">High</option>
+							</select>
+						</div>
+						<button type="submit" class="btn btn-primary btn-add">Add</button>
+					</form>
+					  
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="table-wrap">
+						<table class="table table-responsive-xl">
+						  <thead>
+						    <tr>
+						    	<th>&nbsp;</th>
+						    	<th>#</th>
+                                <th>Task</th>
+                                <th>Status</th>
+                                <th>Action</th>
+						    </tr>
+						  </thead>
+						  <tbody id="area-task-list">
+						  </tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<script src="js/jquery.min.js"></script>
+  <script src="js/popper.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/main.js"></script>
+
+	</body>
+</html>
+
