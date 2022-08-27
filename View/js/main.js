@@ -82,12 +82,15 @@ $('#form-add').submit(async function(e) {
 });
 
 //update task
-updateItem = function(id) {
+getInfoUpdateItem = function(id) {
 	$.getJSON( "http://localhost:3000/api/v1/" + id, (data) => {
 		if($('#form-add').hasClass('d-none'))
 		{
 		$('#form-add').removeClass('d-none')
 		$('#form-add').addClass('d-flex');
+		$('#add-btn').html('Close');
+		$('#add-btn').removeClass('primary-secondary');
+		$('#add-btn').addClass('btn-secondary');
 		}
 		$('#id-update').val(data._id);
 		$('#name-input').val(data.name);
@@ -169,7 +172,7 @@ showItem = (param) => {
 					<td class="status"><span class="${status.color}">${status.name}</span></td>
 					<td>
 					 	<div>
-						 <button type="button" class="btn btn-warning mr-2" onclick="updateItem('${item._id}')">Update</button>
+						 <button type="button" class="btn btn-warning mr-2" onclick="getInfoUpdateItem('${item._id}')">Update</button>
 						 <button type="button" class="btn btn-danger detele-btn" onclick="deleteItem('${item._id}')">Delete</button>
 						 </div>
 					</td>
