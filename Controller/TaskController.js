@@ -1,8 +1,7 @@
-const { models } = require('mongoose');
 const Task = require('../Model/task');
 // const {Task1: a} = require('../Model/task');
 // console.log(a)
-console.log(require('../Model/task'))
+// console.log(require('../Model/task'))
 
 class TaskController {
     // get all 
@@ -17,8 +16,7 @@ class TaskController {
             param.sortType = req.query.orderType;
     
             if(param.sortField) sort[param.sortField] = param.sortType;
-            if(param.keyword !== '') objWhere.name = new RegExp(param.keyword, 'i'); //Ignore UpperCase
-            
+            if(param.keyword && param.keyword !== '') objWhere.name = new RegExp(param.keyword, 'i'); //Ignore UpperCase
             const taskList = await Task.find(objWhere).sort(sort);
             res.header('Access-Control-Allow-Origin', req.headers.origin);
             res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");

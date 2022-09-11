@@ -2,7 +2,11 @@ const mongoose = require('mongoose');
 
 const schemaTask = mongoose.Schema({
     name: String,
-    status: String
+    status: String,
+    done: {
+        type: Boolean,
+        default: false
+    }
 }, {timestamps: true});
 
 // Cach 1: 

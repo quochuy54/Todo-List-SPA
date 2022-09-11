@@ -31,7 +31,6 @@ $('#add-btn').click(function(e) {
 		$('#add-btn').removeClass('btn-primary');
 		$('#add-btn').addClass('btn-secondary');
 		$('#add-btn').html("Close");
-		console.log($('.check-input111'))
 	}
 });
 
@@ -81,7 +80,7 @@ $('#form-add').submit(async function(e) {
 	showItem(param);
 });
 
-//update task
+//get inforUpdate task
 getInfoUpdateItem = function(id) {
 	$.getJSON( "http://localhost:3000/api/v1/" + id, (data) => {
 		if($('#form-add').hasClass('d-none'))
@@ -94,7 +93,7 @@ getInfoUpdateItem = function(id) {
 		}
 		$('#id-update').val(data._id);
 		$('#name-input').val(data.name);
-		$('.form-select').val(data.status);		
+		$('.form-select').val(data.status);
 	})
 };
 
@@ -157,7 +156,7 @@ showItem = (param) => {
 			html += `
 				<tr class="alert" role="alert">
 						<td>
-						<input class="form-check-input check-input111" type="checkbox" value="">
+						<input class="form-check-input check-input" type="checkbox" name="${item._id}" value="${item.done}">
 					</td>
 					<td class="">
 						<div class="pl-3 email">
@@ -178,15 +177,46 @@ showItem = (param) => {
 					</td>
 				</tr>`
 		})
-		row.html(html);
-	}
-});}
 
-// checked
-$('.check-input111').change(function(e) {
-	// if($(this).checked){
-	console.log($('.check-input111'))
-		// $('#name-content').css('text-decoration', 'underline')
-	// }
-})
+		row.html(html);
+		// check underline
+		$('input.check-input[type=checkbox]').each(function() {
+			// render data to checked input
+			if($(this).val() === "true"){
+				$(this).prop('checked', true)
+				$(this).closest('tr').find('#name-content').css('text-decoration','line-through');
+			}
+
+			// add event 
+			$(this).change(function() {
+				fetch('http://localhost:3000/api/v1/' + $(this).attr('name'), {
+					
+					method: 'PUT', // *GET, POST, PUT, DELETE, etc.
+					headers: {
+					'Content-Type': 'application/json'
+					// 'Content-Type': 'application/x-www-form-urlencoded',
+					},
+					body: JSON.stringify(
+						{
+							done: $(this).prop('checked')
+						}
+					)
+				})
+				.then(( ) => {
+					if($(this).prop('checked')){
+						$(this).closest('tr').find('#name-content').css('text-decoration','line-through');
+					}
+					else{
+						$(this).closest('tr').find('#name-content').css('text-decoration','');
+					}
+				})
+				.catch((err) => {
+					console.error(err)
+				})
+				
+			})
+		})
+	}
+});
+}
 
